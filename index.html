@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Nova for Grads</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, Inter, sans-serif;
+      background: #0b0b0f;
+      color: white;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    h1 {
+      font-size: 52px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-top: 60px;
+    }
+
+    p {
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 14px 22px;
+      border-radius: 10px;
+      border: none;
+      background: white;
+      color: black;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    form {
+      max-width: 600px;
+      margin-top: 40px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .footer {
+      margin-top: 100px;
+      opacity: 0.5;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- HERO -->
+    <h1>Nova, but for people before their first job.</h1>
+    <p>
+      A selective network for top early-career talent.  
+      We identify the best graduates, prepare them for the workplace,  
+      and connect them to trusted employers.
+    </p>
+
+    <div class="buttons">
+      <button onclick="showTalent()">Apply as Talent</button>
+      <button onclick="showEmployer()">Request Employer Access</button>
+    </div>
+
+    <!-- STUDENTS INFO -->
+    <h2>For Students</h2>
+    <p>
+      Join a curated early-career network, get guidance for the real world of work,
+      and access high-quality opportunities earlier than everyone else.
+    </p>
+
+    <!-- EMPLOYERS INFO -->
+    <h2>For Employers</h2>
+    <p>
+      Access a pre-filtered pool of top early-career talent.
+      Less noise, more signal. Trusted selection before you ever see a CV.
+    </p>
+
+    <!-- HOW IT WORKS -->
+    <h2>How Selection Works</h2>
+    <p>
+      Apply → Reviewed manually → Accepted into the network → Access unlocked
+    </p>
+
+    <!-- TALENT FORM -->
+    <form id="talentForm" class="hidden" onsubmit="submitTalent(event)">
+      <h2>Talent Application</h2>
+
+      <input required placeholder="Full name" id="t_name">
+      <input required placeholder="Email" id="t_email">
+      <input placeholder="University" id="t_university">
+      <input placeholder="Degree" id="t_degree">
+      <input placeholder="Graduation year" id="t_year">
+      <input placeholder="Location" id="t_location">
+
+      <textarea placeholder="What are you currently learning or building?" id="t_learning"></textarea>
+      <textarea placeholder="What have you done outside coursework that you're proud of?" id="t_project"></textarea>
+      <textarea placeholder="What kind of work do you want in 2–3 years?" id="t_future"></textarea>
+
+      <input placeholder="LinkedIn (optional)" id="t_linkedin">
+      <input placeholder="GitHub / Portfolio (optional)" id="t_portfolio">
+
+      <button type="submit">Submit Application</button>
+    </form>
+
+    <!-- EMPLOYER FORM -->
+    <form id="employerForm" class="hidden" onsubmit="submitEmployer(event)">
+      <h2>Employer Request</h2>
+
+      <input required placeholder="Company name" id="e_company">
+      <input placeholder="Website" id="e_website">
+      <input placeholder="Your name" id="e_name">
+      <input required placeholder="Work email" id="e_email">
+
+      <select id="e_size">
+        <option>Company size</option>
+        <option>1–10</option>
+        <option>11–50</option>
+        <option>51–200</option>
+        <option>200+</option>
+      </select>
+
+      <textarea placeholder="What kind of early talent are you interested in?" id="e_interest"></textarea>
+      <textarea placeholder="When are you planning to hire?" id="e_timeline"></textarea>
+
+      <button type="submit">Request Access</button>
+    </form>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      © Nova for Grads · Selective Early-Career Talent Network
+    </div>
+  </div>
+
+  <script>
+    function showTalent() {
+      document.getElementById('talentForm').classList.remove('hidden')
+      document.getElementById('employerForm').classList.add('hidden')
+      window.scrollTo(0, document.body.scrollHeight)
+    }
+
+    function showEmployer() {
+      document.getElementById('employerForm').classList.remove('hidden')
+      document.getElementById('talentForm').classList.add('hidden')
+      window.scrollTo(0, document.body.scrollHeight)
+    }
+
+    function submitTalent(e) {
+      e.preventDefault()
+
+      const data = {
+        name: t_name.value,
+        email: t_email.value,
+        university: t_university.value,
+        degree: t_degree.value,
+        year: t_year.value,
+        location: t_location.value,
+        learning: t_learning.value,
+        project: t_project.value,
+        future: t_future.value,
+        linkedin: t_linkedin.value,
+        portfolio: t_portfolio.value
+      }
+
+      console.log('Talent submitted:', data)
+
+      // 🔗 Replace this with your backend endpoint later
+      // fetch('YOUR_API_ENDPOINT', { method: 'POST', body: JSON.stringify(data) })
+
+      alert('Application received. We review manually.')
+      e.target.reset()
+    }
+
+    function submitEmployer(e) {
+      e.preventDefault()
+
+      const data = {
+        company: e_company.value,
+        website: e_website.value,
+        name: e_name.value,
+        email: e_email.value,
+        size: e_size.value,
+        interest: e_interest.value,
+        timeline: e_timeline.value
+      }
+
+      console.log('Employer submitted:', data)
+
+      // 🔗 Replace this with your backend endpoint later
+      // fetch('YOUR_API_ENDPOINT', { method: 'POST', body: JSON.stringify(data) })
+
+      alert('Request received. We will follow up.')
+      e.target.reset()
+    }
+  </script>
+
+</body>
+</html>
