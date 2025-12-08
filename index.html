@@ -126,7 +126,6 @@
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="logo">FlagShip</div>
   <div class="header-actions">
@@ -137,7 +136,6 @@
 
 <div class="container">
 
-  <!-- HERO -->
   <h1>FlagShip</h1>
   <p>
     A selective network for top graduates.  
@@ -150,51 +148,37 @@
     <button class="secondary" onclick="showEmployer()">Company Access</button>
   </div>
 
-  <!-- WHY FLAGSHIP -->
   <h2>Why FlagShip</h2>
   <p>
     Graduate hiring is broken. CVs look the same, university brand is over-weighted,
-    and companies waste hundreds of hours screening low-signal applicants.
-  </p>
-  <p>
-    FlagShip exists to fix this. We run a selective intake process and curate a
-    trusted early-career talent pool that companies can rely on with confidence.
+    and companies waste time screening low-signal applicants. FlagShip fixes this
+    by curating a trusted early-career talent pool.
   </p>
 
-  <!-- FOR GRADS -->
   <h2>For Graduates</h2>
   <p>
-    FlagShip is for high-performing students and new graduates who want a stronger
-    entry into the workforce. We assess based on university, degree, results, and
-    overall potential. If accepted, you become part of a curated early-career network
-    with access to top employers.
+    Apply to join a selective network of top early-career talent. If accepted,
+    you gain access to trusted employers and long-term career opportunity.
   </p>
 
-  <!-- FOR COMPANIES -->
   <h2>For Companies</h2>
   <p>
-    FlagShip gives you direct access to a pre-filtered pool of top graduate talent
-    across Australia. We do the upfront selection so you do not waste time screening
-    hundreds of low-signal applications.
+    Access a pre-filtered pool of top graduate talent across Australia. We handle
+    upfront screening so you do not waste time with low-quality applicants.
   </p>
 
   <div class="pricing-box">
     <strong>Company Access (Beta)</strong>
     <p>
-      FlagShip is offered on a paid subscription basis.
-      Pricing during the beta phase will be simple and founder-friendly.
-    </p>
-    <p>
-      Typical pricing will start from <strong>AUD $199–$399 per month</strong>,
-      depending on access level and hiring volume.
+      Access is provided via paid subscription.  
+      Beta pricing starts from <strong>AUD $199–$399/month</strong>.
     </p>
   </div>
 
-  <!-- HOW IT WORKS -->
   <h2>How It Works</h2>
   <p>
-    Graduates apply → We review and filter → Top talent is accepted into FlagShip →  
-    Companies subscribe to access and hire from the network
+    Graduates apply → We review and filter → Top talent is accepted →  
+    Companies subscribe to access and hire
   </p>
 
   <!-- TALENT FORM -->
@@ -217,7 +201,7 @@
     <input placeholder="Portfolio / GitHub (optional)" id="t_portfolio">
 
     <button type="submit">Submit Application</button>
-    <div class="note">Applications are reviewed manually. Not all applicants are accepted.</div>
+    <div class="note">Applications are reviewed manually.</div>
   </form>
 
   <!-- EMPLOYER FORM -->
@@ -241,10 +225,9 @@
     <textarea placeholder="When are you looking to hire?" id="e_timeline"></textarea>
 
     <button type="submit">Request Access</button>
-    <div class="note">Company access is provided on a paid subscription basis.</div>
+    <div class="note">Company access is provided via paid subscription.</div>
   </form>
 
-  <!-- FOOTER -->
   <div class="footer">
     © FlagShip • Selective Graduate Talent Network • Australia
   </div>
@@ -252,6 +235,9 @@
 </div>
 
 <script>
+  const SUPABASE_URL = "https://rftgwykhelnmerfvljky.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJmdGd3eWtoZWxubWVyZnZsamt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUxOTU0MjcsImV4cCI6MjA4MDc3MTQyN30.AMD0U-bsHFG6kqROqsLcAJBIJJWoZF2WjO-gut2gpXQ";
+
   function showTalent() {
     document.getElementById('talentForm').classList.remove('hidden')
     document.getElementById('employerForm').classList.add('hidden')
@@ -268,7 +254,7 @@
     e.preventDefault()
 
     const data = {
-      name: t_name.value,
+      full_name: t_name.value,
       email: t_email.value,
       university: t_university.value,
       degree: t_degree.value,
@@ -277,32 +263,50 @@
       location: t_location.value,
       learning: t_learning.value,
       project: t_project.value,
-      future: t_future.value,
+      future_role: t_future.value,
       linkedin: t_linkedin.value,
       portfolio: t_portfolio.value
     }
 
-    console.log('Graduate submitted:', data)
-    alert('Application received. We review manually.')
-    e.target.reset()
+    fetch(`${SUPABASE_URL}/rest/v1/graduates`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_ANON_KEY,
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+      },
+      body: JSON.stringify(data)
+    }).then(() => {
+      alert("Application received. We review manually.")
+      e.target.reset()
+    })
   }
 
   function submitEmployer(e) {
     e.preventDefault()
 
     const data = {
-      company: e_company.value,
+      company_name: e_company.value,
       website: e_website.value,
-      name: e_name.value,
-      email: e_email.value,
-      size: e_size.value,
-      interest: e_interest.value,
-      timeline: e_timeline.value
+      contact_name: e_name.value,
+      work_email: e_email.value,
+      company_size: e_size.value,
+      hiring_interest: e_interest.value,
+      hiring_timeline: e_timeline.value
     }
 
-    console.log('Employer submitted:', data)
-    alert('Request received. We will follow up.')
-    e.target.reset()
+    fetch(`${SUPABASE_URL}/rest/v1/employers`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_ANON_KEY,
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+      },
+      body: JSON.stringify(data)
+    }).then(() => {
+      alert("Request received. We will follow up.")
+      e.target.reset()
+    })
   }
 </script>
 
