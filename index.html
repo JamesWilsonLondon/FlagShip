@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>FlagShip • Top Graduates. Top Roles.</title>
+  <title>Flag Ship • Top Graduates. Top Roles.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
@@ -15,9 +15,7 @@
       --soft: #f5f8ff;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -176,24 +174,11 @@
       padding-top: 24px;
     }
 
-    /* ✅ Mobile tweaks */
     @media (max-width: 640px) {
-      h1 {
-        font-size: 32px;
-      }
-
-      h2 {
-        font-size: 22px;
-      }
-
-      .header {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .hero {
-        padding: 32px 18px;
-      }
+      h1 { font-size: 32px; }
+      h2 { font-size: 22px; }
+      .header { flex-direction: column; gap: 10px; }
+      .hero { padding: 32px 18px; }
     }
   </style>
 </head>
@@ -201,7 +186,7 @@
 <body>
 
 <div class="header">
-  <div class="logo"><span class="dot"></span> FlagShip</div>
+  <div class="logo"><span class="dot"></span> Flag Ship</div>
   <div class="header-actions">
     <button class="secondary" onclick="showTalent()">For Graduates</button>
     <button onclick="showEmployer()">For Companies</button>
@@ -214,80 +199,71 @@
   <div class="hero">
     <h1>Top graduates. Top roles. One network.</h1>
     <p>
-      FlagShip is where Australia’s most ambitious graduates are selected, showcased,
+      Flag Ship is where Australia’s most ambitious graduates are selected, showcased,
       and connected to the most competitive early-career roles across consulting, tech,
       finance, and high-growth startups.
     </p>
 
     <div class="cta-row">
-      <button onclick="showTalent()">Apply as a Graduate</button>
-      <button class="secondary" onclick="showEmployer()">Company Access</button>
+      <button onclick="showTalent()">Request Early Access</button>
+      <button class="secondary" onclick="showEmployer()">Company Early Access</button>
     </div>
   </div>
 
   <!-- WHAT IT IS -->
-  <h2>What is FlagShip?</h2>
+  <h2>What is Flag Ship?</h2>
   <p>
-    FlagShip is a selective network where top graduates are chosen based on academic
-    excellence, experience, projects, commercial thinking, and technical ability.
+    Flag Ship is a selective network where top graduates are chosen based on academic
+    performance, real-world experience, commercial thinking, and technical ability.
     Those selected are showcased on the platform and exposed to the best graduate
     and early-career roles in the country.
   </p>
 
-  <!-- FOR GRADUATES -->
+  <!-- FOR GRADUATES (LOCKED COPY) -->
   <h2>For Graduates</h2>
   <p>
-    FlagShip is built for students and new graduates who want to compete at the highest
-    level. We select for performance, ambition, and real-world capability. If accepted,
-    you gain access to elite opportunities and become part of a high-hunger peer network.
+    Flag Ship is for graduates who are aiming higher — those who want access to the most
+    competitive roles and who back themselves to perform. We select for ambition,
+    capability, and real-world achievement. If accepted, you join a curated network
+    of high-performing peers and gain visibility with Australia’s top employers.
   </p>
 
   <div class="pill-row">
     <div class="pill">Top Universities</div>
-    <div class="pill">Strong Results</div>
+    <div class="pill">Outstanding Results</div>
     <div class="pill">Internships & Projects</div>
-    <div class="pill">Technical Ability</div>
+    <div class="pill">Technical Skill</div>
     <div class="pill">Commercial Thinking</div>
-    <div class="pill">Communication Skills</div>
+    <div class="pill">Communication</div>
+    <div class="pill">Side Projects</div>
+    <div class="pill">High Performance</div>
   </div>
 
-  <!-- FOR EMPLOYERS -->
+  <!-- FOR COMPANIES -->
   <h2>For Companies</h2>
   <p>
-    FlagShip gives employers direct access to the strongest graduate talent in Australia.
-    From global corporates and consulting firms to the best Seed–Series B startups,
-    FlagShip is where the next generation gets hired.
+    Flag Ship gives employers direct access to Australia’s strongest graduate talent.
+    From global enterprises and consulting firms to the best Seed–Series B startups,
+    Flag Ship is where the next generation gets discovered and hired.
   </p>
 
   <div class="pricing-box">
     <strong>Company Access (Beta)</strong>
     <p>
-      FlagShip is offered on a paid subscription basis.  
-      Early access pricing will start from <strong>AUD $199–$399 per month</strong>.
+      Flag Ship is launching soon. Early employer access is limited and reviewed manually.
     </p>
-  </div>
-
-  <!-- CAREER PATHS -->
-  <h2>Career Paths Featured</h2>
-  <div class="pill-row">
-    <div class="pill">Consulting</div>
-    <div class="pill">Big Tech</div>
-    <div class="pill">Banking & Finance</div>
-    <div class="pill">Product & Engineering</div>
-    <div class="pill">Data & AI</div>
-    <div class="pill">Early-Stage Startups</div>
   </div>
 
   <!-- HOW IT WORKS -->
   <h2>How It Works</h2>
   <p>
-    Graduates apply → We review and select → Top talent is showcased →  
+    Graduates request early access → We review and select → Top talent is showcased →  
     The best companies subscribe to access and hire.
   </p>
 
   <!-- TALENT FORM -->
   <form id="talentForm" class="hidden" onsubmit="submitTalent(event)">
-    <h2>Graduate Application</h2>
+    <h2>Graduate Early Access</h2>
 
     <input required placeholder="Full name" id="t_name">
     <input required placeholder="Email" id="t_email">
@@ -304,13 +280,13 @@
     <input placeholder="LinkedIn (optional)" id="t_linkedin">
     <input placeholder="Portfolio / GitHub (optional)" id="t_portfolio">
 
-    <button type="submit">Submit Application</button>
-    <div class="note">Applications are reviewed manually. Not all applicants are accepted.</div>
+    <button type="submit">Request Early Access</button>
+    <div class="note">Flag Ship is launching soon. Early access is limited and reviewed manually.</div>
   </form>
 
   <!-- EMPLOYER FORM -->
   <form id="employerForm" class="hidden" onsubmit="submitEmployer(event)">
-    <h2>Company Access Request</h2>
+    <h2>Company Early Access</h2>
 
     <input required placeholder="Company name" id="e_company">
     <input placeholder="Website" id="e_website">
@@ -328,12 +304,12 @@
     <textarea placeholder="What type of graduates are you typically looking for?" id="e_interest"></textarea>
     <textarea placeholder="When are you looking to hire?" id="e_timeline"></textarea>
 
-    <button type="submit">Request Access</button>
-    <div class="note">Company access is provided via paid subscription.</div>
+    <button type="submit">Request Early Employer Access</button>
+    <div class="note">Flag Ship is launching soon. Early employer access is limited.</div>
   </form>
 
   <div class="footer">
-    © FlagShip • Australia • Top Graduate Network
+    © Flag Ship • Australia • Top Graduate Network
   </div>
 
 </div>
@@ -381,7 +357,7 @@
       },
       body: JSON.stringify(data)
     }).then(() => {
-      alert("Application received. We review manually.")
+      alert("Early access request received.")
       e.target.reset()
     })
   }
@@ -408,7 +384,7 @@
       },
       body: JSON.stringify(data)
     }).then(() => {
-      alert("Request received. We will follow up.")
+      alert("Early employer access request received.")
       e.target.reset()
     })
   }
