@@ -5,13 +5,23 @@
   <title>Flag Ship • Top Graduates. Top Roles.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- ✅ Subtle custom favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+    <circle cx='50' cy='50' r='48' fill='%233b82f6'/>
+    <path d='M35 25 L70 35 L35 45 Z' fill='white'/>
+  </svg>">
+
   <style>
     :root {
       --bg: #ffffff;
       --text: #111;
       --muted: #555;
       --border: #ececec;
-      --accent: #3b82f6;
+      --blue: #3b82f6;
+      --yellow: #fde68a;
+      --mint: #bbf7d0;
+      --coral: #fecaca;
       --soft: #f5f8ff;
     }
 
@@ -46,7 +56,7 @@
     .dot {
       width: 10px;
       height: 10px;
-      background: var(--accent);
+      background: var(--blue);
       border-radius: 50%;
       display: inline-block;
     }
@@ -82,10 +92,24 @@
     }
 
     .hero {
-      background: linear-gradient(180deg, var(--soft), transparent);
+      background: linear-gradient(135deg, var(--soft), #ffffff, var(--mint));
       padding: 48px 24px;
-      border-radius: 20px;
+      border-radius: 22px;
       margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: var(--yellow);
+      top: -40px;
+      right: -40px;
+      opacity: 0.6;
     }
 
     .cta-row {
@@ -121,17 +145,21 @@
     .pill {
       padding: 6px 12px;
       border-radius: 999px;
-      background: #f3f4f6;
       font-size: 14px;
-      color: #333;
+      color: #111;
     }
+
+    .pill:nth-child(4n+1) { background: var(--yellow); }
+    .pill:nth-child(4n+2) { background: var(--mint); }
+    .pill:nth-child(4n+3) { background: var(--coral); }
+    .pill:nth-child(4n+4) { background: #e0e7ff; }
 
     .pricing-box {
       border: 1px solid var(--border);
       padding: 24px;
       border-radius: 16px;
       margin-top: 24px;
-      background: #fafafa;
+      background: linear-gradient(180deg, #fff, #fafafa);
       max-width: 520px;
     }
 
@@ -195,13 +223,12 @@
 
 <div class="container">
 
-  <!-- HERO -->
   <div class="hero">
     <h1>Top graduates. Top roles. One network.</h1>
     <p>
       Flag Ship is where Australia’s most ambitious graduates are selected, showcased,
-      and connected to the most competitive early-career roles across consulting, tech,
-      finance, and high-growth startups.
+      and connected to the most competitive early career roles across consulting, tech,
+      finance, and high growth startups.
     </p>
 
     <div class="cta-row">
@@ -210,28 +237,26 @@
     </div>
   </div>
 
-  <!-- WHAT IT IS -->
   <h2>What is Flag Ship?</h2>
   <p>
     Flag Ship is a selective network where top graduates are chosen based on academic
-    performance, real-world experience, commercial thinking, and technical ability.
+    performance, real world experience, commercial thinking, and technical ability.
     Those selected are showcased on the platform and exposed to the best graduate
-    and early-career roles in the country.
+    and early career roles in the country.
   </p>
 
-  <!-- FOR GRADUATES (LOCKED COPY) -->
   <h2>For Graduates</h2>
   <p>
-    Flag Ship is for graduates who are aiming higher — those who want access to the most
+    Flag Ship is for graduates who are aiming higher, those who want access to the most
     competitive roles and who back themselves to perform. We select for ambition,
-    capability, and real-world achievement. If accepted, you join a curated network
-    of high-performing peers and gain visibility with Australia’s top employers.
+    capability, and real world achievement. If accepted, you join a curated network
+    of high performing peers and gain visibility with Australia’s top employers.
   </p>
 
   <div class="pill-row">
     <div class="pill">Top Universities</div>
     <div class="pill">Outstanding Results</div>
-    <div class="pill">Internships & Projects</div>
+    <div class="pill">Internships and Projects</div>
     <div class="pill">Technical Skill</div>
     <div class="pill">Commercial Thinking</div>
     <div class="pill">Communication</div>
@@ -239,11 +264,10 @@
     <div class="pill">High Performance</div>
   </div>
 
-  <!-- FOR COMPANIES -->
   <h2>For Companies</h2>
   <p>
     Flag Ship gives employers direct access to Australia’s strongest graduate talent.
-    From global enterprises and consulting firms to the best Seed–Series B startups,
+    From global enterprises and consulting firms to the best Seed to Series B startups,
     Flag Ship is where the next generation gets discovered and hired.
   </p>
 
@@ -254,14 +278,12 @@
     </p>
   </div>
 
-  <!-- HOW IT WORKS -->
   <h2>How It Works</h2>
   <p>
-    Graduates request early access → We review and select → Top talent is showcased →  
-    The best companies subscribe to access and hire.
+    Graduates request early access, we review and select, top talent is showcased,
+    and the best companies subscribe to access and hire.
   </p>
 
-  <!-- TALENT FORM -->
   <form id="talentForm" class="hidden" onsubmit="submitTalent(event)">
     <h2>Graduate Early Access</h2>
 
@@ -269,7 +291,7 @@
     <input required placeholder="Email" id="t_email">
     <input placeholder="University" id="t_university">
     <input placeholder="Degree" id="t_degree">
-    <input placeholder="Average mark / GPA" id="t_marks">
+    <input placeholder="Average mark or GPA" id="t_marks">
     <input placeholder="Graduation year" id="t_year">
     <input placeholder="Location (Australia)" id="t_location">
 
@@ -278,13 +300,12 @@
     <textarea placeholder="What type of role are you aiming for?" id="t_future"></textarea>
 
     <input placeholder="LinkedIn (optional)" id="t_linkedin">
-    <input placeholder="Portfolio / GitHub (optional)" id="t_portfolio">
+    <input placeholder="Portfolio or GitHub (optional)" id="t_portfolio">
 
     <button type="submit">Request Early Access</button>
     <div class="note">Flag Ship is launching soon. Early access is limited and reviewed manually.</div>
   </form>
 
-  <!-- EMPLOYER FORM -->
   <form id="employerForm" class="hidden" onsubmit="submitEmployer(event)">
     <h2>Company Early Access</h2>
 
@@ -295,10 +316,10 @@
 
     <select id="e_size">
       <option>Company size</option>
-      <option>1–10</option>
-      <option>11–50</option>
-      <option>51–200</option>
-      <option>200+</option>
+      <option>1 to 10</option>
+      <option>11 to 50</option>
+      <option>51 to 200</option>
+      <option>200 plus</option>
     </select>
 
     <textarea placeholder="What type of graduates are you typically looking for?" id="e_interest"></textarea>
