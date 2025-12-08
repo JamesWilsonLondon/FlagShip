@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FlagShip Admin</title>
+</head>
+<body>
+
+<h2>Admin Login</h2>
+<input id="pw" type="password" placeholder="Admin password">
+<button onclick="login()">Login</button>
+
+<script>
+  function login() {
+    const password = document.getElementById("pw").value
+    if (password === "flagshipadmin123") {
+      localStorage.setItem("flagship_admin", "true")
+      window.location.href = "dashboard.html"
+    } else {
+      alert("Incorrect password")
+    }
+  }
+</script>
+
+</body>
+</html>
