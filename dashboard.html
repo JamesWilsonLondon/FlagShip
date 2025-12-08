@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FlagShip Dashboard</title>
+</head>
+<body>
+
+<h1>FlagShip Admin Dashboard</h1>
+
+<button onclick="exportCSV()">Export Graduates CSV</button>
+
+<h2>Filters</h2>
+<input id="filterUniversity" placeholder="Filter by University">
+<input id="filterDegree" placeholder="Filter by Degree">
+
+<h2>Graduates</h2>
+<table border="1" id="graduatesTable"></table>
+
+<script>
+const SUPABASE_URL = "https://rftgwykhelnmerfvljky.supabase.co"
+const SUPABASE_ANON_KEY = "YOUR_KEY_ALREADY_ADDED"
+
+if (!localStorage.getItem("flagship_admin")) {
+  location.href = "admin.html"
+}
+
+let graduates = []
+
+async function loadGraduates() {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/graduates?select=*`, {
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+    }
+  })
+  graduates = await res.json()
+  renderTable()
+}
+
+function renderTable() {
+  const table = document.getElementById("graduatesTable")
+  table.innerHTML = ""
+
+  const uniFilter = document.getElementById("filterUniversity").value.toLowerCase()
+  const degreeFilter = document.getElementById("filterDegree").value.toLowerCase()
+
+  const filtered = graduates.filter(g =>
+    g.university?.toLowerCase().includes(uniFilter) &&
+    g.degree?.toLowerCase().includes(degreeFilter)
+  )
+
+  filtered.forEach(g => {
+    const row = `<tr>
+      <td>${g.full_name}</td>
+      <td>${g.university}</td>
+      <td>${g.degree}</td>
+      <td>${g.marks}</td>
+      <td>${g.status}</td>
+      <td>
+        <select onchange="updateStatus('${g.id}', this.value)">
+          <option>pending</option>
+          <option>accepted</option>
+          <option>rejected</option>
+        </select>
+      </td>
+    </tr>`
+    table.innerHTML += row
+  })
+}
+
+async function updateStatus(id, status) {
+  await fetch(`${SUPABASE_URL}/rest/v1/graduates?id=eq.${id}`, {
+    method: "PATCH",
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ status })
+  })
+  loadGraduates()
+}
+
+function exportCSV() {
+  let csv = "Name,University,Degree,Marks,Status\n"
+  graduates.forEach(g => {
+    csv += `${g.full_name},${g.university},${g.degree},${g.marks},${g.status}\n`
+  })
+
+  const blob = new Blob([csv])
+  const link = document.createElement("a")
+  link.href = URL.createObjectURL(blob)
+  link.download = "flagship_graduates.csv"
+  link.click()
+}
+
+loadGraduates()
+</script>
+
+</body>
+</html>
