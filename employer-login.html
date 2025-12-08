@@ -1,0 +1,11 @@
+<input id="pw">
+<button onclick="login()">Login</button>
+
+<script>
+function login() {
+  if (pw.value === "flagship-employer") {
+    localStorage.setItem("flagship_employer", "true")
+    location.href = "employer.html"
+  }
+}
+</script>
