@@ -5,7 +5,7 @@
   <title>Flag Ship • Top Graduates. Top Roles.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- ✅ Subtle custom favicon -->
+  <!-- Subtle custom favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
     <circle cx='50' cy='50' r='48' fill='%233b82f6'/>
@@ -58,7 +58,6 @@
       height: 10px;
       background: var(--blue);
       border-radius: 50%;
-      display: inline-block;
     }
 
     .header-actions button {
@@ -74,7 +73,7 @@
     h1 {
       font-size: 40px;
       font-weight: 750;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       line-height: 1.15;
     }
 
@@ -82,6 +81,9 @@
       margin-top: 56px;
       font-size: 26px;
       font-weight: 650;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     p {
@@ -92,28 +94,18 @@
     }
 
     .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
       background: linear-gradient(135deg, var(--soft), #ffffff, var(--mint));
       padding: 48px 24px;
       border-radius: 22px;
       margin-bottom: 32px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: var(--yellow);
-      top: -40px;
-      right: -40px;
-      opacity: 0.6;
+      align-items: center;
     }
 
     .cta-row {
-      margin-top: 28px;
+      margin-top: 24px;
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
@@ -184,9 +176,7 @@
       resize: vertical;
     }
 
-    .hidden {
-      display: none;
-    }
+    .hidden { display: none; }
 
     .note {
       font-size: 14px;
@@ -202,11 +192,21 @@
       padding-top: 24px;
     }
 
-    @media (max-width: 640px) {
+    svg.sketch {
+      max-width: 100%;
+      height: auto;
+      stroke: #111;
+      stroke-width: 2.2;
+      fill: none;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
       h1 { font-size: 32px; }
       h2 { font-size: 22px; }
       .header { flex-direction: column; gap: 10px; }
-      .hero { padding: 32px 18px; }
     }
   </style>
 </head>
@@ -223,18 +223,31 @@
 
 <div class="container">
 
+  <!-- HERO -->
   <div class="hero">
-    <h1>Top graduates. Top roles. One network.</h1>
-    <p>
-      Flag Ship is where Australia’s most ambitious graduates are selected, showcased,
-      and connected to the most competitive early career roles across consulting, tech,
-      finance, and high growth startups.
-    </p>
+    <div>
+      <h1>Top graduates. Top roles. One network.</h1>
+      <p>
+        Flag Ship is where Australia’s most ambitious graduates are selected, showcased,
+        and connected to the most competitive early career roles across consulting, tech,
+        finance, and high growth startups.
+      </p>
 
-    <div class="cta-row">
-      <button onclick="showTalent()">Request Early Access</button>
-      <button class="secondary" onclick="showEmployer()">Company Early Access</button>
+      <div class="cta-row">
+        <button onclick="showTalent()">Request Early Access</button>
+        <button class="secondary" onclick="showEmployer()">Company Early Access</button>
+      </div>
     </div>
+
+    <!-- ✅ HERO SKETCH -->
+    <svg class="sketch" viewBox="0 0 260 220">
+      <path d="M40 180 L120 120 L200 80" />
+      <circle cx="200" cy="80" r="12" />
+      <path d="M120 120 L130 105 L145 120 L130 135 Z" />
+      <path d="M40 180 L60 160" />
+      <path d="M60 160 L80 140" />
+      <path d="M80 140 L100 120" />
+    </svg>
   </div>
 
   <h2>What is Flag Ship?</h2>
@@ -245,7 +258,14 @@
     and early career roles in the country.
   </p>
 
-  <h2>For Graduates</h2>
+  <!-- ✅ FOR GRADUATES WITH SKETCH -->
+  <h2>
+    <svg class="sketch" width="26" height="26" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="38"/>
+      <path d="M50 20 L55 50 L80 50"/>
+    </svg>
+    For Graduates
+  </h2>
   <p>
     Flag Ship is for graduates who are aiming higher, those who want access to the most
     competitive roles and who back themselves to perform. We select for ambition,
@@ -264,7 +284,14 @@
     <div class="pill">High Performance</div>
   </div>
 
-  <h2>For Companies</h2>
+  <!-- ✅ FOR COMPANIES WITH SKETCH -->
+  <h2>
+    <svg class="sketch" width="26" height="26" viewBox="0 0 100 100">
+      <rect x="20" y="40" width="60" height="40"/>
+      <rect x="35" y="20" width="30" height="20"/>
+    </svg>
+    For Companies
+  </h2>
   <p>
     Flag Ship gives employers direct access to Australia’s strongest graduate talent.
     From global enterprises and consulting firms to the best Seed to Series B startups,
@@ -278,11 +305,21 @@
     </p>
   </div>
 
-  <h2>How It Works</h2>
+  <!-- ✅ HOW IT WORKS WITH SKETCH -->
+  <h2>
+    <svg class="sketch" width="26" height="26" viewBox="0 0 100 100">
+      <path d="M20 80 L80 20"/>
+      <path d="M60 20 L80 20 L80 40"/>
+    </svg>
+    How It Works
+  </h2>
   <p>
     Graduates request early access, we review and select, top talent is showcased,
     and the best companies subscribe to access and hire.
   </p>
+
+  <!-- === FORMS AND SUPABASE LOGIC BELOW THIS ARE UNCHANGED === -->
+
 
   <form id="talentForm" class="hidden" onsubmit="submitTalent(event)">
     <h2>Graduate Early Access</h2>
