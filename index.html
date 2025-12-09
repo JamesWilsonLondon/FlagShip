@@ -5,8 +5,12 @@
   <title>Flag Ship • Top Graduates. Top Roles.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- ✅ Real favicon using your triangle icon -->
-  <link rel="icon" type="image/png" href="/FlagShipLogo.png">
+  <!-- ✅ Subtle custom favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+    <circle cx='50' cy='50' r='48' fill='%233b82f6'/>
+    <path d='M35 25 L70 35 L35 45 Z' fill='white'/>
+  </svg>">
 
   <style>
     :root {
@@ -185,10 +189,10 @@
     }
 
     .note {
-      font-size: 14px;
-      color: #777;
-      margin-top: 8px;
-    }
+  font-size: 14px;
+  color: #777;
+  margin-top: 8px;
+  }
 
     .footer {
       margin-top: 96px;
@@ -210,10 +214,7 @@
 <body>
 
 <div class="header">
-  <!-- ✅ Use your uploaded logo; clickable back to home -->
-  <a href="/" class="logo">
-    <img src="/FlagShipText.png" alt="Flag Ship logo" style="height: 32px;">
-  </a>
+  <div class="logo"><span class="dot"></span> Flag Ship</div>
   <div class="header-actions">
     <button class="secondary" onclick="showTalent()">For Graduates</button>
     <button onclick="showEmployer()">For Companies</button>
@@ -230,6 +231,7 @@
       finance, and high growth startups.
     </p>
     <p><strong>Instead of relying on fragmented referrals, Flag Ship offers a curated network of high-signal graduate talent.</strong></p>
+
 
     <div class="cta-row">
       <button onclick="showTalent()">Request Early Access</button>
@@ -272,9 +274,10 @@
   </p>
 
   <div class="pricing-box">
-    <strong>Founding Partner Access</strong>
+   <strong>Founding Partner Access</strong>
     <p>
-      Founding partners get priority access to the first graduate cohort and direct introductions as the network opens.
+    Founding partners get priority access to the first graduate cohort and direct introductions as the network opens.
+
     </p>
   </div>
 
@@ -303,8 +306,8 @@
     <input placeholder="Portfolio or GitHub (optional)" id="t_portfolio">
 
     <button type="submit">Request Early Access</button>
-    <div class="note">Flag Ship is launching soon. Early access is limited and reviewed manually. Shortlisted candidates are invited to a 15-minute intro call.</div>
-    <div class="note">Applications are reviewed weekly. Founding cohort invites are sent on a rolling basis.</div>
+<div class="note">Flag Ship is launching soon. Early access is limited and reviewed manually. Shortlisted candidates are invited to a 15-minute intro call.</div>
+<div class="note">Applications are reviewed weekly. Founding cohort invites are sent on a rolling basis.</div>
   </form>
 
   <form id="employerForm" class="hidden" onsubmit="submitEmployer(event)">
