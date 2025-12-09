@@ -5,11 +5,10 @@
   <title>Flag Ship • Top Graduates. Top Roles.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- ✅ Subtle custom favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
     <circle cx='50' cy='50' r='48' fill='%233b82f6'/>
-    <path d='M35 25 L70 35 L35 45 Z' fill='white'/>
+    <path d='M30 60 L70 60 L50 30 Z' fill='white'/>
   </svg>">
 
   <style>
@@ -47,7 +46,6 @@
     .logo {
       font-weight: 700;
       font-size: 20px;
-      letter-spacing: -0.3px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -58,11 +56,6 @@
       height: 10px;
       background: var(--blue);
       border-radius: 50%;
-      display: inline-block;
-    }
-
-    .header-actions button {
-      margin-left: 8px;
     }
 
     .container {
@@ -74,8 +67,6 @@
     h1 {
       font-size: 40px;
       font-weight: 750;
-      margin-bottom: 16px;
-      line-height: 1.15;
     }
 
     h2 {
@@ -92,28 +83,16 @@
     }
 
     .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
       background: linear-gradient(135deg, var(--soft), #ffffff, var(--mint));
       padding: 48px 24px;
       border-radius: 22px;
-      margin-bottom: 32px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: var(--yellow);
-      top: -40px;
-      right: -40px;
-      opacity: 0.6;
     }
 
     .cta-row {
-      margin-top: 28px;
+      margin-top: 24px;
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
@@ -127,7 +106,6 @@
       background: var(--text);
       color: #fff;
       cursor: pointer;
-      white-space: nowrap;
     }
 
     .secondary {
@@ -146,20 +124,14 @@
       padding: 6px 12px;
       border-radius: 999px;
       font-size: 14px;
-      color: #111;
     }
-
-    .pill:nth-child(4n+1) { background: var(--yellow); }
-    .pill:nth-child(4n+2) { background: var(--mint); }
-    .pill:nth-child(4n+3) { background: var(--coral); }
-    .pill:nth-child(4n+4) { background: #e0e7ff; }
 
     .pricing-box {
       border: 1px solid var(--border);
       padding: 24px;
       border-radius: 16px;
       margin-top: 24px;
-      background: linear-gradient(180deg, #fff, #fafafa);
+      background: #fafafa;
       max-width: 520px;
     }
 
@@ -171,42 +143,22 @@
     input, textarea, select {
       width: 100%;
       padding: 12px;
-      margin-top: 6px;
       margin-bottom: 18px;
-      font-size: 15px;
       border-radius: 8px;
       border: 1px solid var(--border);
-      font-family: inherit;
-    }
-
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .hidden {
-      display: none;
     }
 
     .note {
-  font-size: 14px;
-  color: #777;
-  margin-top: 8px;
-  }
-
-    .footer {
-      margin-top: 96px;
       font-size: 14px;
-      color: #888;
-      border-top: 1px solid var(--border);
-      padding-top: 24px;
+      color: #777;
+      margin-top: 8px;
     }
 
-    @media (max-width: 640px) {
+    .hidden { display: none; }
+
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; }
       h1 { font-size: 32px; }
-      h2 { font-size: 22px; }
-      .header { flex-direction: column; gap: 10px; }
-      .hero { padding: 32px 18px; }
     }
   </style>
 </head>
@@ -215,42 +167,33 @@
 
 <div class="header">
   <div class="logo"><span class="dot"></span> Flag Ship</div>
-  <div class="header-actions">
-    <button class="secondary" onclick="showTalent()">For Graduates</button>
-    <button onclick="showEmployer()">For Companies</button>
-  </div>
 </div>
 
 <div class="container">
 
   <div class="hero">
-    <h1>Top graduates. Top roles. One network.</h1>
-    <p>
-      Flag Ship is where Australia’s most ambitious graduates are selected, showcased,
-      and connected to the most competitive early career roles across consulting, tech,
-      finance, and high growth startups.
-    </p>
+    <div>
+      <h1>Top graduates. Top roles. One network.</h1>
+      <p>
+        Flag Ship is where Australia’s most ambitious graduates are selected, showcased,
+        and connected to the most competitive early career roles across consulting, tech,
+        finance, and high growth startups.
+      </p>
 
-    <div class="cta-row">
-      <button onclick="showTalent()">Request Early Access</button>
-      <button class="secondary" onclick="showEmployer()">Company Early Access</button>
+      <p><strong>Currently building the founding cohort for Australia’s top graduates and early employer partners.</strong></p>
+
+      <div class="cta-row">
+        <button onclick="showTalent()">Request Early Access</button>
+        <button class="secondary" onclick="showEmployer()">Company Early Access</button>
+      </div>
     </div>
   </div>
-
-  <h2>What is Flag Ship?</h2>
-  <p>
-    Flag Ship is a selective network where top graduates are chosen based on academic
-    performance, real world experience, commercial thinking, and technical ability.
-    Those selected are showcased on the platform and exposed to the best graduate
-    and early career roles in the country.
-  </p>
 
   <h2>For Graduates</h2>
   <p>
     Flag Ship is for graduates who are aiming higher, those who want access to the most
     competitive roles and who back themselves to perform. We select for ambition,
-    capability, and real world achievement. If accepted, you join a curated network
-    of high performing peers and gain visibility with Australia’s top employers.
+    capability, and real world achievement.
   </p>
 
   <div class="pill-row">
@@ -260,155 +203,69 @@
     <div class="pill">Technical Skill</div>
     <div class="pill">Commercial Thinking</div>
     <div class="pill">Communication</div>
-    <div class="pill">Side Projects</div>
     <div class="pill">High Performance</div>
   </div>
+
+  <h3>Example early career roles featured on Flag Ship include:</h3>
+  <ul>
+    <li>Strategy and Consulting Analyst</li>
+    <li>Graduate Software Engineer</li>
+    <li>Associate Product Manager</li>
+  </ul>
 
   <h2>For Companies</h2>
   <p>
     Flag Ship gives employers direct access to Australia’s strongest graduate talent.
-    From global enterprises and consulting firms to the best Seed to Series B startups,
-    Flag Ship is where the next generation gets discovered and hired.
+    Instead of relying on fragmented referrals, Flag Ship offers a single curated
+    network of high signal graduate talent.
   </p>
 
   <div class="pricing-box">
-    <strong>Company Access (Beta)</strong>
+    <strong>Founding Partner Access</strong>
     <p>
-      Flag Ship is launching soon. Early employer access is limited and reviewed manually.
+      Founding partners get priority access to the first graduate cohort and direct
+      introductions as the network opens.
     </p>
   </div>
 
-  <h2>How It Works</h2>
-  <p>
-    Graduates request early access, we review and select, top talent is showcased,
-    and the best companies subscribe to access and hire.
-  </p>
-
+  <!-- GRAD FORM -->
   <form id="talentForm" class="hidden" onsubmit="submitTalent(event)">
     <h2>Graduate Early Access</h2>
 
     <input required placeholder="Full name" id="t_name">
     <input required placeholder="Email" id="t_email">
-    <input placeholder="University" id="t_university">
-    <input placeholder="Degree" id="t_degree">
-    <input placeholder="Average mark or GPA" id="t_marks">
-    <input placeholder="Graduation year" id="t_year">
-    <input placeholder="Location (Australia)" id="t_location">
-
-    <textarea placeholder="What are you currently learning or working on?" id="t_learning"></textarea>
-    <textarea placeholder="What achievement best represents you?" id="t_project"></textarea>
-    <textarea placeholder="What type of role are you aiming for?" id="t_future"></textarea>
-
-    <input placeholder="LinkedIn (optional)" id="t_linkedin">
-    <input placeholder="Portfolio or GitHub (optional)" id="t_portfolio">
 
     <button type="submit">Request Early Access</button>
-    <div class="note">Flag Ship is launching soon. Early access is limited and reviewed manually.</div>
+    <div class="note">Flag Ship is launching soon. Early access is limited and reviewed manually. Shortlisted candidates are invited to a 15-minute intro call.</div>
+    <div class="note">Applications are reviewed weekly. Founding cohort invites are sent on a rolling basis.</div>
   </form>
 
+  <!-- EMPLOYER FORM -->
   <form id="employerForm" class="hidden" onsubmit="submitEmployer(event)">
     <h2>Company Early Access</h2>
 
     <input required placeholder="Company name" id="e_company">
-    <input placeholder="Website" id="e_website">
-    <input placeholder="Your name" id="e_name">
     <input required placeholder="Work email" id="e_email">
 
-    <select id="e_size">
-      <option>Company size</option>
-      <option>1 to 10</option>
-      <option>11 to 50</option>
-      <option>51 to 200</option>
-      <option>200 plus</option>
-    </select>
-
-    <textarea placeholder="What type of graduates are you typically looking for?" id="e_interest"></textarea>
-    <textarea placeholder="When are you looking to hire?" id="e_timeline"></textarea>
-
     <button type="submit">Request Early Employer Access</button>
-    <div class="note">Flag Ship is launching soon. Early employer access is limited.</div>
+    <div class="note">Flag Ship is launching soon. Early employer access is limited. Graduates are manually reviewed across academics, experience, projects, and real world performance.</div>
   </form>
-
-  <div class="footer">
-    © Flag Ship • Australia • Top Graduate Network
-  </div>
 
 </div>
 
 <script>
-  const SUPABASE_URL = "https://rftgwykhelnmerfvljky.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJmdGd3eWtoZWxubWVyZnZsamt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUxOTU0MjcsImV4cCI6MjA4MDc3MTQyN30.AMD0U-bsHFG6kqROqsLcAJBIJJWoZF2WjO-gut2gpXQ";
-
   function showTalent() {
     document.getElementById('talentForm').classList.remove('hidden')
     document.getElementById('employerForm').classList.add('hidden')
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
   }
 
   function showEmployer() {
     document.getElementById('employerForm').classList.remove('hidden')
     document.getElementById('talentForm').classList.add('hidden')
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
   }
 
-  function submitTalent(e) {
-    e.preventDefault()
-
-    const data = {
-      full_name: t_name.value,
-      email: t_email.value,
-      university: t_university.value,
-      degree: t_degree.value,
-      marks: t_marks.value,
-      graduation_year: t_year.value,
-      location: t_location.value,
-      learning: t_learning.value,
-      project: t_project.value,
-      future_role: t_future.value,
-      linkedin: t_linkedin.value,
-      portfolio: t_portfolio.value
-    }
-
-    fetch(`${SUPABASE_URL}/rest/v1/graduates`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": SUPABASE_ANON_KEY,
-        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
-      },
-      body: JSON.stringify(data)
-    }).then(() => {
-      alert("Early access request received.")
-      e.target.reset()
-    })
-  }
-
-  function submitEmployer(e) {
-    e.preventDefault()
-
-    const data = {
-      company_name: e_company.value,
-      website: e_website.value,
-      contact_name: e_name.value,
-      work_email: e_email.value,
-      company_size: e_size.value,
-      hiring_interest: e_interest.value,
-      hiring_timeline: e_timeline.value
-    }
-
-    fetch(`${SUPABASE_URL}/rest/v1/employers`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": SUPABASE_ANON_KEY,
-        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
-      },
-      body: JSON.stringify(data)
-    }).then(() => {
-      alert("Early employer access request received.")
-      e.target.reset()
-    })
-  }
+  function submitTalent(e) { e.preventDefault(); alert("Submitted") }
+  function submitEmployer(e) { e.preventDefault(); alert("Submitted") }
 </script>
 
 </body>
